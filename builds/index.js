@@ -15,9 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const dotenv_1 = require("dotenv");
+const cors_1 = __importDefault(require("cors"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 app.get('/breeds', (_req, res, next) => {
     (0, node_fetch_1.default)('https://api.thecatapi.com/v1/breeds')
         .then((apiResponse) => apiResponse.json())
