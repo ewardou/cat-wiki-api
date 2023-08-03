@@ -1,6 +1,7 @@
 import express from 'express'
 import fetch from 'node-fetch'
 import { config } from 'dotenv'
+import cors from 'cors'
 
 config()
 
@@ -16,6 +17,7 @@ interface API {
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/breeds', (_req, res, next) => {
   fetch('https://api.thecatapi.com/v1/breeds')
